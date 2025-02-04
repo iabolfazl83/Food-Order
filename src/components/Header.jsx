@@ -10,7 +10,7 @@ export function Header() {
         </h1>
       </div>
       <nav>
-        <button>Cart</button>
+        <button className="text-button">Cart (0)</button>
       </nav>
 
     </header>
