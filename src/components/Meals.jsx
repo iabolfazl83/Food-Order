@@ -11,7 +11,6 @@ export default function Meals() {
     async function fetchData() {
       setIsFetching(true);
       try {
-        debugger
         const meals = await fetchMeals();
         setMeals(meals);
       } catch (error) {
@@ -36,11 +35,14 @@ export default function Meals() {
               <img src={`http://localhost:3000/${meal.image}`} alt={meal.name}/>
             </div>
             <div className="article">
-              <h1>{meals.name}</h1>
+              <h3>{meal.name}</h3>
+              <div className="meal-item-price">${meal.price}</div>
               <div className="meal-item-description">
                 {meal.description}
               </div>
-              <div className="meal-item-price">{meal.price}</div>
+            <div className="meal-item-actions">
+              <button className="button">Add to Cart</button>
+            </div>
             </div>
           </div>
         ))
