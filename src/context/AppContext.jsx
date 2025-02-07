@@ -1,16 +1,19 @@
-import {createContext, useState} from "react";
+import {createContext, useContext, useState} from "react";
 
 export const appContext = createContext({
-  open: false,
-  setOpen: () => {
-  },
+  cartItems: [],
+  setCartItems: () => {},
 });
 
+export function useAppContext() {
+  return useContext(appContext);
+}
+
 const AppContextProvider = ({children}) => {
-  const [open, setOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([])
   const appContextValues = {
-    open,
-    setOpen,
+    cartItems,
+    setCartItems,
   }
 
   return (
