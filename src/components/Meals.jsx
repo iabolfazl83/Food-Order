@@ -1,13 +1,12 @@
 import {fetchMeals} from "../http.js";
 import {useEffect, useState} from "react";
 
-export default function Meals() {
+export default function Meals({addToCart}) {
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
 
   useEffect(() => {
-
     async function fetchData() {
       setIsFetching(true);
       try {
@@ -41,7 +40,7 @@ export default function Meals() {
                 {meal.description}
               </div>
             <div className="meal-item-actions">
-              <button className="button">Add to Cart</button>
+              <button className="button" onClick={addToCart}>Add to Cart</button>
             </div>
             </div>
           </div>
