@@ -1,9 +1,16 @@
 import logo from '../assets/logo.jpg'
 import {Cart} from "./Cart.jsx";
 import {useState} from "react";
+import {useAppContext} from "../context/AppContext.jsx";
+import Checkout from "./Checkout.jsx";
+import CheckoutResult from "./CheckoutResult.jsx";
+import Button from "./UI/Button.jsx";
 
 export function Header() {
-  const [visible, setVisible] = useState(false);
+  const [cartVisible, setCartVisible] = useState(false);
+  const [checkoutVisible, setCheckoutVisible] = useState(false);
+  const [checkoutResult, setCheckoutResult] = useState(false);
+  const {cartItems} = useAppContext();
 
   return (
     <>
@@ -15,18 +22,25 @@ export function Header() {
           </h1>
         </div>
         <nav>
-          <button className="text-button" onClick={() => {
-            setVisible(true)
-          }}>Cart (0)
-          </button>
+          <Button textOnly onClick={() => {
+            setCartVisible(true)
+          }}>
+            Cart ({cartItems.length})
+          </Button>
         </nav>
       </header>
-      <Cart visible={visible} onClose={() => setVisible(false)}/>
 
-      {/*after submitting cart this below component should show*/}
-      {/*<Checkout open={openCart}/>*/}
-      {/*after submitting form component this below component should show*/}
-      {/*<checkoutResult open={openCart}/>*/}
+      <Cart visible={cartVisible} onClose={() => setCartVisible(false)} onSubmit={() => {
+        setCheckoutVisible(true);
+        setCartVisible(false);
+      }}/>
+
+      <Checkout visible={checkoutVisible} onClose={() => {
+        setCheckoutVisible(false);
+        setCheckoutResult(true);
+      }}/>
+
+      <CheckoutResult visible={checkoutResult} onClose={() => setCheckoutResult(false)}/>
     </>
   )
 }
