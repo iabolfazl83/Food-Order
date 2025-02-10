@@ -1,7 +1,9 @@
 import {fetchMeals} from "../http.js";
 import {useEffect, useState} from "react";
+import {useAppContext} from "../context/AppContext.jsx";
+import MealItem from "./MealItem.jsx";
 
-export default function Meals({addToCart}) {
+export default function Meals() {
   const [meals, setMeals] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState();
@@ -29,21 +31,7 @@ export default function Meals({addToCart}) {
       }
       {
         !error && meals.map(meal => (
-          <div key={meal.id} className="meal-item">
-            <div>
-              <img src={`http://localhost:3000/${meal.image}`} alt={meal.name}/>
-            </div>
-            <div className="article">
-              <h3>{meal.name}</h3>
-              <div className="meal-item-price">${meal.price}</div>
-              <div className="meal-item-description">
-                {meal.description}
-              </div>
-            <div className="meal-item-actions">
-              <button className="button" onClick={addToCart}>Add to Cart</button>
-            </div>
-            </div>
-          </div>
+          <MealItem key={meal.id} meal={meal}/>
         ))
       }
     </div>
