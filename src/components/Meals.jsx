@@ -1,6 +1,5 @@
 import {fetchMeals} from "../http.js";
 import {useEffect, useState} from "react";
-import {useAppContext} from "../context/AppContext.jsx";
 import MealItem from "./MealItem.jsx";
 
 export default function Meals() {
