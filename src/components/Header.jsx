@@ -23,7 +23,7 @@ export function Header() {
         </div>
         <nav>
           <Button textOnly onClick={() => {
-            setCartVisible(true)
+            setCartVisible(true);
           }}>
             Cart ({cartItems.length})
           </Button>
@@ -35,12 +35,13 @@ export function Header() {
         setCartVisible(false);
       }}/>
 
-      <Checkout visible={checkoutVisible} onClose={() => {
+      <Checkout visible={checkoutVisible} onClose={() => setCheckoutVisible(false)} onSubmit={() => {
         setCheckoutVisible(false);
         setCheckoutResult(true);
       }}/>
 
       <CheckoutResult visible={checkoutResult} onClose={() => setCheckoutResult(false)}/>
+
     </>
   )
 }

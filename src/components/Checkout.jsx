@@ -2,12 +2,12 @@ import Dialog from "./Dialog.jsx";
 import {useAppContext} from "../context/AppContext.jsx";
 import Button from "./UI/Button.jsx";
 
-export default function Checkout({visible, onClose}) {
+export default function Checkout({visible, onClose, onSubmit}) {
   const {getCartTotal} = useAppContext();
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    onClose();
+    onSubmit();
   }
 
   return (
@@ -41,7 +41,7 @@ export default function Checkout({visible, onClose}) {
                 </div>
               </div>
               <div className="modal-actions">
-                <Button textOnly onClick={() => {
+                <Button type="button" textOnly onClick={() => {
                   close();
                   onClose();
                 }}>Close
