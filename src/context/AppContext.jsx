@@ -3,8 +3,8 @@ import {createContext, useContext, useState} from "react";
 export const appContext = createContext({
   cartItems: [],
   setCartItems: () => {},
-  addToCart: () => {},
-  removeFromCart: () => {},
+  addToCart: (item) => {},
+  removeFromCart: (item) => {},
   clearCart: () => {},
   getCartTotal: () => {},
 });
