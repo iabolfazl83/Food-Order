@@ -1,4 +1,4 @@
-import Dialog from "./Dialog.jsx";
+import Modal from "./Modal.jsx";
 import {useAppContext} from "../context/AppContext.jsx";
 import {currencyFormatter} from "../formatting.js";
 import Button from "./UI/Button.jsx";
@@ -6,7 +6,7 @@ import Button from "./UI/Button.jsx";
 export function Cart({visible, onSubmit, onClose}) {
   const {cartItems, getCartTotal, removeFromCart, addToCart} = useAppContext();
   return (
-    <Dialog visible={visible}>
+    <Modal visible={visible}>
       {
         (close) => (
           <div className="cart">
@@ -43,6 +43,6 @@ export function Cart({visible, onSubmit, onClose}) {
           </div>
         )
       }
-    </Dialog>
+    </Modal>
   );
 }

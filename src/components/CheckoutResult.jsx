@@ -1,9 +1,9 @@
-import Dialog from "./Dialog.jsx";
+import Modal from "./Modal.jsx";
 import Button from "./UI/Button.jsx";
 
 export default function CheckoutResult({visible, onClose}) {
   return (
-    <Dialog visible={visible}>
+    <Modal visible={visible}>
       {
         (close) => (
           <div>
@@ -20,6 +20,6 @@ export default function CheckoutResult({visible, onClose}) {
           </div>
         )
       }
-    </Dialog>
+    </Modal>
   )
 }

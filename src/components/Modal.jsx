@@ -1,6 +1,6 @@
 import {useRef} from "react";
 
-export default function Dialog({children, visible}) {
+export default function Modal({children, visible}) {
   const dialog = useRef();
 
   const close = () => {
