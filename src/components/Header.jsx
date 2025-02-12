@@ -12,6 +12,10 @@ export function Header() {
   const [checkoutResult, setCheckoutResult] = useState(false);
   const {cartItems} = useAppContext();
 
+  const allCartItems = cartItems.reduce((totalCartItems, item) => {
+    return totalCartItems + item.quantity;
+  }, 0)
+
   return (
     <>
       <header id="main-header">
@@ -25,7 +29,7 @@ export function Header() {
           <Button textOnly onClick={() => {
             setCartVisible(true);
           }}>
-            Cart ({cartItems.length})
+            Cart ({allCartItems})
           </Button>
         </nav>
       </header>
