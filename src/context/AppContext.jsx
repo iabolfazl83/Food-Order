@@ -1,12 +1,15 @@
 import {createContext, useContext, useReducer} from "react";
 
+//initialState
 const initialState = {
   cartItems: [],
 }
 
+//actions
 const ADD_ITEM = "ADD_ITEM";
 const REMOVE_ITEM = "REMOVE_ITEM";
 
+//reducer
 function cartReducer(state, action) {
   switch (action.type) {
 
@@ -53,6 +56,7 @@ function cartReducer(state, action) {
   }
 }
 
+//app ctx
 export const AppContext = createContext({
   cartItems: [],
   addToCart: (item) => {},
@@ -60,10 +64,12 @@ export const AppContext = createContext({
   getCartTotal: () => {},
 });
 
+//use ctx hook
 export function useAppContext() {
   return useContext(AppContext);
 }
 
+//ctx provider
 const AppContextProvider = ({children}) => {
   const [cart, dispatchCartActions] = useReducer(cartReducer, initialState);
 
