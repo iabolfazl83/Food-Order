@@ -1,4 +1,4 @@
-import {currencyFormatter} from "../formatting.js";
+import {currencyFormatter} from "../util/formatting.js";
 import Button from "./UI/Button.jsx";
 import {useAppContext} from "../context/AppContext.jsx";
 
