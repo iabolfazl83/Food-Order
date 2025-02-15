@@ -8,11 +8,11 @@ const initialState = {
 //actions
 const ADD_ITEM = "ADD_ITEM";
 const REMOVE_ITEM = "REMOVE_ITEM";
+const CLEAR_CART = "CLEAR_CART";
 
 //reducer
 function cartReducer(state, action) {
   switch (action.type) {
-
     case ADD_ITEM: {
       const item = action.payload;
       const existingItem = state.cartItems.find(cartItem => cartItem.id === item.id);
@@ -51,6 +51,11 @@ function cartReducer(state, action) {
       return {...state, cartItems: updatedCart};
     }
 
+    case CLEAR_CART: {
+      let updatedCart = [];
+      return {...state, cartItems: updatedCart};
+    }
+
     default:
       return state;
   }
@@ -59,9 +64,14 @@ function cartReducer(state, action) {
 //app ctx
 export const AppContext = createContext({
   cartItems: [],
-  addToCart: (item) => {},
-  removeFromCart: (item) => {},
-  getCartTotal: () => {},
+  addToCart: (item) => {
+  },
+  removeFromCart: (item) => {
+  },
+  getCartTotal: () => {
+  },
+  clearCart: () => {
+  }
 });
 
 //use ctx hook
@@ -87,6 +97,12 @@ const AppContextProvider = ({children}) => {
     })
   }
 
+  const clearCart = () => {
+    dispatchCartActions({
+      type: CLEAR_CART,
+    })
+  }
+
   const getCartTotal = () => {
     return cart.cartItems.reduce((total, item) => (total + item.price * item.quantity), 0).toFixed(2);
   };
@@ -96,6 +112,7 @@ const AppContextProvider = ({children}) => {
     addToCart,
     removeFromCart,
     getCartTotal,
+    clearCart,
   }
 
   return (
