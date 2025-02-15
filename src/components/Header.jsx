@@ -10,7 +10,7 @@ export function Header() {
   const [cartVisible, setCartVisible] = useState(false);
   const [checkoutVisible, setCheckoutVisible] = useState(false);
   const [checkoutResult, setCheckoutResult] = useState(false);
-  const {cartItems} = useAppContext();
+  const {cartItems, clearCart} = useAppContext();
 
   const allCartItems = cartItems.reduce((totalCartItems, item) => {
     return totalCartItems + item.quantity;
@@ -51,7 +51,10 @@ export function Header() {
 
       <CheckoutResult
         visible={checkoutResult}
-        onClose={() => setCheckoutResult(false)}/>
+        onClose={() => {
+          setCheckoutResult(false);
+          clearCart();
+        }}/>
     </>
   )
 }
