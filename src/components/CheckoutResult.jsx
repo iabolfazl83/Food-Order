@@ -3,7 +3,7 @@ import Button from "./UI/Button.jsx";
 
 export default function CheckoutResult({visible, onClose}) {
   return (
-    <Modal visible={visible}>
+    <Modal visible={visible} onClose={onClose}>
       <div>
         <h2>Success!</h2>
         <p>Your order was submitted successfully.</p>
@@ -11,6 +11,7 @@ export default function CheckoutResult({visible, onClose}) {
         <div className="modal-actions">
           <Button onClick={() => {
             onClose();
+            clearCart();
           }}>Okay
           </Button>
         </div>
