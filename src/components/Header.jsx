@@ -34,18 +34,24 @@ export function Header() {
         </nav>
       </header>
 
-      <Cart visible={cartVisible} onClose={() => setCartVisible(false)} onSubmit={() => {
-        setCheckoutVisible(true);
-        setCartVisible(false);
-      }}/>
+      <Cart
+        visible={cartVisible}
+        onClose={() => setCartVisible(false)}
+        onSubmit={() => {
+          setCartVisible(false);
+          setCheckoutVisible(true);
+        }}/>
 
-      <Checkout visible={checkoutVisible} onClose={() => setCheckoutVisible(false)} onSubmit={() => {
+      <Checkout
+        visible={checkoutVisible}
+        onClose={() => setCheckoutVisible(false)} onSubmit={() => {
         setCheckoutVisible(false);
         setCheckoutResult(true);
       }}/>
 
-      <CheckoutResult visible={checkoutResult} onClose={() => setCheckoutResult(false)}/>
-
+      <CheckoutResult
+        visible={checkoutResult}
+        onClose={() => setCheckoutResult(false)}/>
     </>
   )
 }
